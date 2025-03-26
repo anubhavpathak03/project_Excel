@@ -30,7 +30,6 @@ html,body {
 .file-action {
     margin: 0.5rem;
     color: #fff;
-    /* font-family: "Space Grotesk", sans-serif; */
 }
 #cell-property-section {
     background-color: whitesmoke;
@@ -42,13 +41,17 @@ html,body {
 }
 
 #cell-property-section > * {
-    display: inline-block;
+    display: block;
     margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
 }
 
 .font-family-prop {
     padding: 0.2rem;
     border-radius: 5px;
+    font-family: "Space Grotesk", sans-serif;
 }
 
 .font-size-prop {
@@ -192,11 +195,41 @@ html,body {
     width: 5rem;
     text-align: center;
     border: 1px solid rgb(214, 208, 208);
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    text-align: left;
+    /* display: flex;
+    align-items: center; */
     overflow: scroll;
     scrollbar-width: none;
+}
+
+/* Day-2 -> two way binding (cell properties)*/
+
+.bg-paint-button-span,
+.font-paint-button-span {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.paint-button {
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
 
 }
+
+.font-color-prop,
+.BGcolor-prop {
+    /* background-color: transparent; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+

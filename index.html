@@ -21,17 +21,18 @@
             <div class="file-action">Help</div>
         </div>
         <div id="cell-property-section">
-            <span><i class="fa-regular fa-copy"></i></span>
-            <span><i class="fa-solid fa-scissors"></i></span>
-            <span><i class="fa-regular fa-paste"></i></span>
+            <span class="copy"><i class="fa-regular fa-copy"></i></span>
+            <span class="scissors"><i class="fa-solid fa-scissors"></i></span>
+            <span class="paste"><i class="fa-regular fa-paste"></i></span>
+
 
             <span>
                 <select name="" id="" class="font-family-prop">
-                    <option value="Space Grotesk">Space Grotesk</option>
-                    <option value="Calibri">Calibri</option>
                     <option value="monospace">Monospace</option>
-                    <option value="Times New Roman">Time New Roman</option>
-                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="cursive">Cursive</option>
+                    <option value="Space Grotesk">Space Grotesk</option>
+                    <option value="fantasy">Fantasy</option>
                 </select>
             </span>
 
@@ -49,16 +50,42 @@
                 </select>
             </span>
 
-            <span><i class="fa-solid fa-bold"></i></span>
-            <span><i class="fa-solid fa-italic"></i></span>
-            <span><i class="fa-solid fa-underline"></i></span>
-            <span><i class="fa-solid fa-align-left"></i></span>
-            <span><i class="fa-solid fa-align-center"></i></span>
-            <span><i class="fa-solid fa-align-right"></i></span>
+            <span class="bold"><i class="fa-solid fa-bold"></i></span>
+            <span class="italic"><i class="fa-solid fa-italic"></i></span>
+            <span class="underline"><i class="fa-solid fa-underline"></i></span>
+            
+            <span class="alignment left">
+                <i class="fa-solid fa-align-left "></i>
+            </span>
+            
+            <span class="alignment center">
+                <i class="fa-solid fa-align-center "></i>
+            </span>
+            
+            <span class="alignment right">
+                <i class="fa-solid fa-align-right "></i>
+            </span>
+
+            <span class="font-paint-button-span">
+                <button type="select" class="paint-button">
+                    <i class="fa-solid fa-font"></i>
+                </button>
+                <input type="color" class="font-color-prop">
+            </span>
+
+            <span class="bg-paint-button-span">
+                <button type="select" class="paint-button">
+                    <i class="fa-solid fa-fill-drip"></i>
+                </button>
+                <input type="color" class="BGcolor-prop">
+            </span>
         </div>
         <div id="formula-header-section">
+            
             <input type="text" class="address-bar"  readonly name="" id="">
+            
             <img src="assets/image.png" class="function-icon" alt="" srcset="">
+            
             <input type="text" class="formula-bar"  name="" id="">
 
         </div>
@@ -82,6 +109,9 @@
             </div>        
         </div>
     </div>
-    <script src="script.js"></script>
+
+
+    <script src="./grid.script.js"></script>
+    <script src="./cell_properties.script.js"></script>
 </body>
 </html>
