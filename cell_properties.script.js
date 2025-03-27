@@ -167,29 +167,78 @@ alignmentButtons.forEach((button) => {
 });
 
 
+let allCells = document.querySelectorAll(".about-cell");
+//  it will provide nodelist that's why we use forEach loop
+
+allCells.forEach((cell) => {
+    cell.addEventListener("click", (e) => {
+        applyCellProperties(cell);
+    })
+})
+
+
+function applyCellProperties(cell) {
+    let address = addressBar.value;
+    let [rid, cid] = decoding(address);
+    let cellProp = sheetDB[rid][cid];  
+    // accessing the property of that particular cell which is select or mention on address bar
+
+
+    if(!cell) return;
+        // Apply styles from cell properties
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+    cell.style.fontSize = cellProp.fontSize + "px";
+    cell.style.fontFamily = cellProp.fontFamily;
+    cell.style.color = cellProp.fontColor;
+    cell.style.backgroundColor = cellProp.BGcolor === "#000000" ? "transparent" : cellProp.BGcolor;
+    cell.style.textAlign = cellProp.alignment;
+
+    // Update toolbar UI based on selected cell's properties
+    bold.style.backgroundColor = cellProp.bold ? activeColorProp : inactiveColorProp;
+    italic.style.backgroundColor = cellProp.italic ? activeColorProp : inactiveColorProp;
+    underline.style.backgroundColor = cellProp.underline ? activeColorProp : inactiveColorProp;
+    fontSize.value = cellProp.fontSize;
+    fontFamily.value = cellProp.fontFamily;
+    fontColorInput.value = cellProp.fontColor;
+    bgColorInput.value = cellProp.BGcolor;
+    bgColorInput.style.backgroundColor = bgColorInput.value;
+    fontColorInput.style.backgroundColor = fontColorInput.value;
 
 
 
+    // Reset alignment buttons
+    leftAlign.style.backgroundColor = inactiveColorProp;
+    centerAlign.style.backgroundColor = inactiveColorProp;
+    rightAlign.style.backgroundColor = inactiveColorProp;
 
-
-
-
-
-
+    if (cellProp.alignment === "left") {
+        leftAlign.style.backgroundColor = activeColorProp;
+    } else if (cellProp.alignment === "center") {
+        centerAlign.style.backgroundColor = activeColorProp;
+    } else if (cellProp.alignment === "right") {
+        rightAlign.style.backgroundColor = activeColorProp;
+    }
+    // interseted point to remember == (lose equality) automatically converts types if needed
+    //  === (strict equality) allows security (because it checks both value and also type)
+}
 
 
 function getActiveCell(address) {
-    let [rid, cid] = decoding(address);
+    let [rid, cid] = decoding(address);   // this line of intalising rid and cid called destructuring Assignment
     // Access cell & storage object
-    let cell = document.querySelector(`.about-cell[rid="${rid}"][cid="${cid}"]`);
+    let cell = document.querySelector(`.about-cell[rid="${rid}"][cid="${cid}"]`);  
+    // here it is dynamic we get dynamic value of cell if we use only [rid][cid] then it not changes with value 
+    // mtlab different rid or cid pass he nhi hogi 
     let cellProp = sheetDB[rid][cid];
     return [cell, cellProp];
 }
 
 //decode rid and cid from address 
 function decoding(address) {
-    // address -> "A1"
+    // address -> "A1"  A - cid, 1 -> rid 
     let rid = Number(address.slice(1)-1); // 0-based index
     let cid = Number(address.charCodeAt(0)-65); // "A" -> 65
-    return [rid, cid];
+    return [rid, cid]; // returning an array
 }
